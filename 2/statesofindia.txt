@@ -1,0 +1,102 @@
+main.dart
+
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter App',
+      theme: ThemeData(
+        colorSchemeSeed: Colors.indigo,
+        useMaterial3: true,
+        brightness: Brightness.light,
+      ),
+      home: MyHomePage(title: 'Widgets and Layouts'),
+      debugShowCheckedModeBanner: false,
+    );
+  }
+}
+
+class MyHomePage extends StatelessWidget {    
+  MyHomePage({Key? key, required this.title}) : super(key: key);    
+  // This widget is the home page of your application.    
+  final String title;
+  @override    
+  Widget build(BuildContext context) {    
+    return Scaffold(  
+        appBar: AppBar(title: Text("Widgets and Layouts")),  
+        body: ListView(  
+          padding: const EdgeInsets.fromLTRB(3.0, 12.0, 3.0, 12.0),  
+          children: <Widget>[  
+            states(  
+                name: "Maharashtra",  
+                capital: "Its Capital is Mumbai",  
+                area: 308000,    
+            ),  
+            states(  
+                name: "Rajasthan",  
+                capital: "Its Capital is Jaipur",  
+                area: 342239,  
+            ), 
+            states(  
+                name: "Gujarat",  
+                capital: "Its Capital is Gandhinagar",  
+                area: 196024,  
+            ),
+            states(  
+                name: "Kerala",  
+                capital: "Its Capital is Thiruvananthapuram",  
+                area: 38863,  
+            ),   
+          ],  
+        )  
+    );     
+  }    
+}   
+
+class states extends StatelessWidget {  
+  states({Key? key, required this.name, required this.capital, required this.area}) :  
+        super(key: key);  
+  final String name;  
+  final String capital;  
+  final int area; 
+  
+  Widget build(BuildContext context) {  
+    return Container(  
+        padding: EdgeInsets.all(2),  
+        height: 110,  
+        child: Card(  
+            child: Row(  
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,  
+                children: <Widget>[    
+                  Text(name),
+                  Expanded(  
+                      child: Container(  
+                          padding: EdgeInsets.all(5),  
+                          child: Column(  
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,  
+                            children: <Widget>[  
+                              Text(  
+                                  this.name+", India", style: TextStyle(  
+                                  fontWeight: FontWeight.bold  
+                              )  
+                              ),  
+                              Text(this.capital), Text(  
+                                  "Area in Sq.km : " + this.area.toString()  
+                              ),  
+                            ],  
+                          )  
+                      )  
+                  )  
+                ]  
+            )  
+        )  
+    );  
+  }  
+}
